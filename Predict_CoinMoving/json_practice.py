@@ -1,4 +1,8 @@
 import json
+import requests
+import urllib.request
+
+
 
 def get_coin_data_url(coinName, type, scale, cnt=400) :
     addr = 'https://crix-api-endpoint.upbit.com/v1/crix/candles/'
@@ -17,7 +21,11 @@ scale = '1'
 
 # get_coin_data_url(coinName,type,scale)
 
-addr = 'https://crix-api-endpoint.upbit.com/v1/crix/candles/minutes/1/?code=CRIX.UPBIT.KRW-XRP&count='+str(400)
+addr = 'https://crix-api-endpoint.upbit.com/v1/crix/candles/minutes/30/?code=CRIX.UPBIT.KRW-XRP&count='+str(400)
 
 
-print(addr)
+respone = requests.get(addr)
+
+data = respone.json()
+
+print(data)
