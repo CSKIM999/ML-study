@@ -15,18 +15,26 @@ def get_coin_data_url(coinName, type, scale, cnt=400) :
 
 # 수정 변수들
 coinName = "XRP"
-to_date = '2021-05-0'
+to_date = '2021-05-09'
 num = 30
 scale = '1'
 
 # get_coin_data_url(coinName,type,scale)
 
-addr = 'https://crix-api-endpoint.upbit.com/v1/crix/candles/minutes/30/?code=CRIX.UPBIT.KRW-XRP&count='+str(400)
+addr = 'https://crix-api-endpoint.upbit.com/v1/crix/candles/minutes/30/?code=CRIX.UPBIT.KRW-MBL&count='+str(400)
 
 
 respone = requests.get(addr)
 
 data = respone.json()
+# print(data)
+i=1
+dateKst = data[i]['candleDateTime']
+print("%.2f"%data[i]['openingPrice'])
+# print(dateKst)
+
+
+
 
 # def get_upbit_data(url, last_date, to_date) :
 #     global show_title
