@@ -21,17 +21,18 @@ scale = '1'
 
 # get_coin_data_url(coinName,type,scale)
 
-addr = 'https://crix-api-endpoint.upbit.com/v1/crix/candles/minutes/30/?code=CRIX.UPBIT.KRW-MBL&count='+str(400)
+addr = 'https://crix-api-endpoint.upbit.com/v1/crix/candles/minutes/30/?code=CRIX.UPBIT.KRW-SSX&count='+str(400)
 
 
 respone = requests.get(addr)
 
 data = respone.json()
 # print(data)
-i=1
-dateKst = data[i]['candleDateTime']
-print("%.2f"%data[i]['openingPrice'])
-# print(dateKst)
+for i in range(len(data)):
+    # dateKst = data[i]['candleDateTime']
+    print("%.2f"%data[i]['openingPrice'])
+    # print(dateKst)
+    
 
 
 
