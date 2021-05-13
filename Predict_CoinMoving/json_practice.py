@@ -5,7 +5,7 @@ import time
 import pandas as pd
 
 df = pd.DataFrame()
-index = 2
+index = 0
 last_date = ''
 
 def get_coin_data_url(coinName, type, scale, cnt=400) :
@@ -35,16 +35,17 @@ url = basic_url
 # respone = requests.get(url)
 
 # data = respone.json()
-# print(data)
+# # print(data)
 
     
 # df_for = pd.DataFrame(data)
 # df.append(df_for,ignore_index=True)
-# print(data[0])
+# print(df.head(5))
 
 
 def get_upbit_data(url, last_date, to_date) :
     global df
+    global index
 
     fail2GetData = False
     response = ''
@@ -63,12 +64,30 @@ def get_upbit_data(url, last_date, to_date) :
         exit()
 
     data = response.json()
-    df_for = pd.DataFrame(data)
-    df.append(df_for,ignore_index=True)
-    date = ''
-    # print(data[0]['candleDateTime'])
-    date = data[len(data)-1]['candleDateTime']
-    print('Doing well...')
+
+    if index == 0:
+        print('plan a')
+        df = pd.DataFrame(data)
+        date = ''
+        date = data[len(data)-1]['candleDateTime']
+        index +=1
+        print(df)
+        print('='*100)
+        print('='*100)
+
+    else:
+        print('plan b')
+        df_for = pd.DataFrame(data)
+        print(df_for)
+        df = df.append(df_for,ignore_index=True)
+        date = ''
+        # print(data[0]['candleDateTime'])
+        date = data[len(data)-1]['candleDateTime']
+        print('Doing well...')
+        print('='*100)
+        print('='*100)
+
+
 
     return date
 
@@ -83,5 +102,10 @@ while (1) :
     url = basic_url + '&to=' + target_date    #to=2019-11-27 04:01:00
     time.sleep(2)
 
+
+############# PANDAS FRAMEWORK ############
+
+idx_todate = df.index[(df.candleDateTimeKst == '{}T00:00:00+09:00'.format(to_date))].tolist()[0]+1
+df = df.drop(df.index[idx_todate:])
 
 print(df)
