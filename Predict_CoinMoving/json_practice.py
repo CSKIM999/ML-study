@@ -109,3 +109,32 @@ idx_todate = df.index[(df.candleDateTimeKst == '{}T00:00:00+09:00'.format(to_dat
 df = df.drop(df.index[idx_todate:])
 
 print(df)
+
+'''
+필요 보조지표 수식
+RSI :   전일보다 상승한 날의 상승분 U  // 하락장의 하락분 D
+        U 값과 D 값의 평균값을 구해서 AU 와 AD 로 구분 후 AU/ AD = RS
+        RSI = RS / (1 + RS)  [[ 이 값은 백분율로 나타나진다 ]]
+        일반적으로 14, 15 , 25, 9 일의 기간 사용
+
+CCI :   M = 전일의 ( 고가 + 저가 + 종가 ) / 3
+        SM = M 의 n일 합계 / n
+        D = ( M - SM ) 의 N 일 합계 / N
+        CCI = ( M - SM ) / (0.015 * D)
+        일반적으로 N 은 20 사용
+
+MACD:   종가를 이용한 장/단기 지수이동평균 계산
+        권장 장/단기 변수 26/12
+        신호선의 N 값 9
+        MACD = 단기 지수이동평균 - 장기지수이동평균
+        MACD 신호선 = N 일의 MACD 지수이동 평균
+        MACD Oscillator = MACD - MACD 신호선
+
+
+EMA :   EMA(price,N)i = alpha*price + ( 1 - alpha) * EMA(price,N)(i-1)
+        ex) N = 5 [[ alpha = a = 2/5+1 = 1/3 ]]
+            (1/3)(2/3)^0 * A + (1/3)(2/3)^1 * B + (1/3)(2/3)^2 * C + (1/3)(2/3)^4 * D + (1/3)(2/3)^4 * E + (1/3)(2/3)^5 * F
+
+
+
+'''
