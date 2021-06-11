@@ -1,15 +1,6 @@
-# # 온코더 1번문제 피보나치수열 247점
-# class Solution:
-#     def __init__(self):
-#         i = [0,1]
-#         k=1
-#         while True:
-#             i_next = i[k-1] + i[k]
-#             i.append(i_next)
-#             k+=1
-#             if k ==80:
-#                 break
-#         self.i = i
-#     def solution(self, n):
-#         return self.i[n]
+U = [4, 1, 1, 2, 4, 11, 0, 0, 4, 2, 8]
 
+print(U[1-6])
+
+# for i in range(len(U)):
+#     if U[i]

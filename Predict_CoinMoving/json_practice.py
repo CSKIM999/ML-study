@@ -138,7 +138,31 @@ MACD:   종가를 이용한 장/단기 지수이동평균 계산
 EMA :   EMA(price,N)i = alpha*price + ( 1 - alpha) * EMA(price,N)(i-1)
         ex) N = 5 [[ alpha = a = 2/5+1 = 1/3 ]]
             (1/3)(2/3)^0 * A + (1/3)(2/3)^1 * B + (1/3)(2/3)^2 * C + (1/3)(2/3)^4 * D + (1/3)(2/3)^4 * E + (1/3)(2/3)^5 * F
-
-
-
+        위는 지수이동평균으로써 나름 추세를 균일하게 반영한다.
+        하지만 조금 더 최근 추세를 반영하기 위해 업비트와 같은 거래소에서는 지수가중이동평균 EWMA 를 사용한다
+        그 식은 다음과 같다.
+        
 '''
+
+df['rsi_ud'] = 0
+
+for j in range(2):
+    upper = 0
+    down = 0
+    for i in range(14):
+        if df['tradePrice'][i+j] > df['tradePrice'][i+j+1]:
+            upper += (df['tradePrice'][i+j] - df['tradePrice'][i+j+1])
+            print(upper)
+        elif df['tradePrice'][i+j] < df['tradePrice'][i+j+1]:
+            down += df['tradePrice'][i+j+1] - df['tradePrice'][i+j]
+            print(down)
+        else:
+            continue
+    print(upper,down)
+    AU = upper/14
+    AD = down/14
+    RS = AU / AD
+    # print(RS)
+    RSI = (RS/(1+RS))
+    # print(RSI)
+
