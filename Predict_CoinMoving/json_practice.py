@@ -123,12 +123,16 @@ CCI :   M = 전일의 ( 고가 + 저가 + 종가 ) / 3
         CCI = ( M - SM ) / (0.015 * D)
         일반적으로 N 은 20 사용
 
+
+
 MACD:   종가를 이용한 장/단기 지수이동평균 계산
         권장 장/단기 변수 26/12
         신호선의 N 값 9
         MACD = 단기 지수이동평균 - 장기지수이동평균
         MACD 신호선 = N 일의 MACD 지수이동 평균
         MACD Oscillator = MACD - MACD 신호선
+
+
 
 
 EMA :   EMA(price,N)i = alpha*price + ( 1 - alpha) * EMA(price,N)(i-1)
