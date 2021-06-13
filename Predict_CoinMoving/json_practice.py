@@ -141,28 +141,10 @@ EMA :   EMA(price,N)i = alpha*price + ( 1 - alpha) * EMA(price,N)(i-1)
         위는 지수이동평균으로써 나름 추세를 균일하게 반영한다.
         하지만 조금 더 최근 추세를 반영하기 위해 업비트와 같은 거래소에서는 지수가중이동평균 EWMA 를 사용한다
         그 식은 다음과 같다.
-        
+
+
+        21/06/13 직접 ema 모듈을 만들어내고싶었지만, 어려울 뿐더러, Pandas 에서 기본 제공하는 ewm 모듈이 있고
+        그 모듈을 사용하는 방법이 더욱 더 정확한 값을 도출하므로, 그 메서드를 사용하고자 함.
+        ewm ( com, span, alpha, min_period)
+        com : center of mass // span : period scale // min_period : minimum period of data
 '''
-
-df['rsi_ud'] = 0
-
-for j in range(2):
-    upper = 0
-    down = 0
-    for i in range(14):
-        if df['tradePrice'][i+j] > df['tradePrice'][i+j+1]:
-            upper += (df['tradePrice'][i+j] - df['tradePrice'][i+j+1])
-            print(upper)
-        elif df['tradePrice'][i+j] < df['tradePrice'][i+j+1]:
-            down += df['tradePrice'][i+j+1] - df['tradePrice'][i+j]
-            print(down)
-        else:
-            continue
-    print(upper,down)
-    AU = upper/14
-    AD = down/14
-    RS = AU / AD
-    # print(RS)
-    RSI = (RS/(1+RS))
-    # print(RSI)
-
