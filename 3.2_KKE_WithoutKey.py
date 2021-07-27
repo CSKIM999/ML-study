@@ -1,9 +1,7 @@
 import os
 from math import exp
-from typing import *
 from pandas._libs.tslibs import *
 from pandas.core import frame
-from pandas.core.internals.blocks import IntBlock
 import pyupbit
 import time
 from urllib.parse import urlencode
