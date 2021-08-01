@@ -25,6 +25,8 @@ server_url = 'https://upbit.com/home'
 upbit = pyupbit.Upbit(access,secret)
 path = os.path.dirname(os.path.realpath(__file__))
 
+################# 하나로 묶기
+
 b1_1 = 1
 b2_1 = 1
 b3_1 = 1
@@ -36,7 +38,10 @@ b2_3 = 1
 b3_3 = 1
 balance ='BALANCE'
 tickers = get_tickers()
+################# ################# 
 
+
+################# 하나로 묶기
 #상수값
 const_num_1 = 1
 coin_ticker_1 = 'BTC'
@@ -58,6 +63,8 @@ want2tradetime_3=30
 op_mode_3 = False
 hold_3 = False
 pwr_btn_3 = 0
+
+################# ################# 
 
 def resource_path(realative_path):
     try:
@@ -109,6 +116,9 @@ def focus_in_entry_box(widget):
 ########################################################################################################
 ########################################################################################################
 
+
+################# ################# ################# 
+
 def btn_const_1():
     global const_num_1
     global b1_1
@@ -153,6 +163,8 @@ def btn_const_3():
     btn_const_num_set_3.config(state='disable')
     if b1_3+b2_3+b3_3 ==0:
         btn_start_3.config(state='normal')
+
+################# ################# ################# 
 
 def btn_coin_ticker_1():
     global coin_ticker_1
@@ -201,7 +213,9 @@ def btn_coin_ticker_3():
     text_3.see(END)
     if b1_3+b2_3+b3_3 ==0:
         btn_start_3.config(state='normal')
-    
+
+################# ################# ################# 
+
 def btn_w2tmin_1():
     global want2tradetime_1
     global b3_1
@@ -267,6 +281,8 @@ def btn_w2tmin_3():
     text_3.see(END)
     if b1_3+b2_3+b3_3 ==0:
         btn_start_3.config(state='normal')
+
+################# ################# ################# 
 
 def  min_30_trade_1():
     global op_mode_1
@@ -423,7 +439,9 @@ def  min_30_trade_3():
             text_3.insert(END,'[[[ 거래 중지 완료 ]]]\n')
             text_3.see(END)
             break
-  
+
+################# ################# ################# 
+
 def  min_10_trade_1():
     global op_mode_1
     global pwr_btn_1
@@ -591,6 +609,8 @@ def  min_10_trade_3():
             text_3.insert(END,'[[[ 거래 중지 완료 ]]]\n')
             text_3.see(END)
             break
+
+################# ################# ################# 
 
 def  min_60_trade_1():
     global op_mode_1
@@ -760,6 +780,7 @@ def  min_60_trade_3():
             text_3.see(END)
             break
 
+################# ################# ################# 
 
 def  min_240_trade_1():
     global op_mode_1
@@ -817,7 +838,6 @@ def  min_240_trade_1():
             text_1.see(END)
             break
 
-
 def  min_240_trade_2():
     global op_mode_2
     global pwr_btn_2
@@ -873,7 +893,6 @@ def  min_240_trade_2():
             text_2.insert(END,'[[[ 거래 중지 완료 ]]]\n')
             text_2.see(END)
             break
-
 
 def  min_240_trade_3():
     global op_mode_3
@@ -931,6 +950,7 @@ def  min_240_trade_3():
             text_3.see(END)
             break
 
+################# ################# ################# 
 
 def cal_target_1():
     global target_1
@@ -983,6 +1003,9 @@ def cal_target_3():
     return target_3
 
 target_3 = cal_target_3()
+
+
+################# ################# ################# 
 
 class BackThread_start1(threading.Thread):   
     global want2tradetime_1
@@ -1109,7 +1132,9 @@ class BackThread_start_3(threading.Thread):
                     text_3.see(END)
                     btn_start_3.config('disable')
                     min_240_trade_3()
-  
+
+################# ################# ################# 
+
 class BackThread_stop_1(threading.Thread):    
     def __init__(self):
         threading.Thread.__init__(self)
@@ -1134,6 +1159,7 @@ class BackThread_stop_3(threading.Thread):
     def run (self):
         trade_off_3
 
+################# ################# ################# 
 
 def trade_off_1():
     global pwr_btn_1
@@ -1170,6 +1196,13 @@ def trade_off_3():
     text_3.see(END)
     pwr_btn_3 = 1
     progressbar_3.stop()
+
+################# ################# ################# 
+
+'''
+>>> 함수부가 초창기에 세부분으로 나눈다고 상당히 복잡하다 간단하게 만들자
+'''
+
 
 ##################################################################
 #############   GUI   ############################################
